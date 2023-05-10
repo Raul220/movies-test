@@ -5,13 +5,17 @@ interface IMovie {
     overview: string;
     release_date: string;
     genre_ids: number[];
+    title: string;
 }
 
-interface IGetFilmsVariables {
-    api_key: string;
+interface IGetMoviesVariables {
+    api_key: string
+    page: number
 }
 
-interface IGetFilmsResponse {
-    result?: IMovie[] | null;
-    status: number;
+interface IGetMoviesResponse {
+    results: IMovie[]
+    total_pages: number
+    total_results: number
+    page: number
 }
