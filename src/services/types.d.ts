@@ -6,6 +6,7 @@ interface IMovie {
     release_date: string;
     genre_ids: number[];
     title: string;
+    original_title: string;
 }
 
 interface IGetMoviesVariables {

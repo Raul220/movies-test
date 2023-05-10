@@ -1,4 +1,3 @@
-import { type } from "os";
 import { State } from "./movieState";
 
 export interface UpdateTotals {

@@ -9,7 +9,7 @@ export interface State {
 
 export interface Store {
     state: State;
-    dispatch?: React.Dispatch< UpdateTotals | UpdateCurrentPage>;
+    dispatch?: React.Dispatch< UpdateTotals | UpdateCurrentPage >;
 }
 
 const initialState: State = {
