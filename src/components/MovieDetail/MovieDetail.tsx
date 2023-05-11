@@ -3,6 +3,7 @@ import TitleComponent from "../Title/Title";
 import { img_url_base } from "../../utils/utils";
 import { Col, Divider, Image, Row, Space } from "antd";
 import CompanyList from "../Company/CompanyList";
+import VoteComponent from "../Vote/Vote";
 
 const DetailComponent: FC<{ movie: IGetMovieDetailResponse }> = ({ movie }) => {
   return (
@@ -24,6 +25,15 @@ const DetailComponent: FC<{ movie: IGetMovieDetailResponse }> = ({ movie }) => {
         />
       </Space>
       <Divider />
+      <p>
+        <span style={{ fontWeight: 700 }}>Votos: </span>
+        {movie.vote_count}
+      </p>
+      <p>
+        <span style={{ fontWeight: 700 }}>Average: </span>
+        {movie.vote_average}
+      </p>
+      <VoteComponent />
       <p>
         <span style={{ fontWeight: 700 }}>Estrenada: </span>
         {movie.release_date}
@@ -61,14 +71,6 @@ const DetailComponent: FC<{ movie: IGetMovieDetailResponse }> = ({ movie }) => {
       <p>
         <span style={{ fontWeight: 700 }}>Ganancia: </span>
         {movie.revenue}
-      </p>
-      <p>
-        <span style={{ fontWeight: 700 }}>Votos: </span>
-        {movie.vote_count}
-      </p>
-      <p>
-        <span style={{ fontWeight: 700 }}>Average: </span>
-        {movie.vote_average}
       </p>
       <p>
         <span style={{ fontWeight: 700 }}>Productoras:</span>
