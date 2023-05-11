@@ -60,3 +60,26 @@ interface IProducton_Company {
     name: string;
     origin_country: string;
 }
+
+interface ICreateGuessSessionVariables {
+    api_key: string;
+}
+
+interface ICreateGuessSessionResponse {
+    success: boolean;
+    guest_session_id: string;
+    expires_at: string;
+}
+
+interface IRateVariables {
+    api_key: string;
+    value: number;
+    movie_id: string;
+    guest_session_id: string;
+}
+
+interface IRateResponse {
+    status_code: number;
+    status_message: string;
+    success: boolean;
+}
