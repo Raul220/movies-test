@@ -10,7 +10,12 @@ export interface UpdateCurrentPage {
   payload: number;
 }
 
-type Action = UpdateTotals | UpdateCurrentPage;
+export interface UpdateMovies {
+    type: "UPDATE_MOVIES";
+    payload: IMovie[]
+}
+
+type Action = UpdateTotals | UpdateCurrentPage | UpdateMovies;
 const MovieReducer = (state: State, action: Action): State => {
     switch (action.type) {
         case 'UPDATE_TOTALS':
@@ -22,6 +27,11 @@ const MovieReducer = (state: State, action: Action): State => {
             return {
                 ...state,
                 currentPage: action.payload,
+            };
+        case 'UPDATE_MOVIES':
+            return {
+                ...state,
+                movies: action.payload,
             };
         default:
             return state;

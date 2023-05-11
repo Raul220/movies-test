@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
-import { getMovies } from '../services/moviesServices'
-import { useMovieContext } from '../context/movieState'
+import { useEffect, useState } from "react";
+import { getMovies } from "../services/moviesServices";
+import { useMovieContext } from "../context/movieState";
+import { api_key } from "../utils/utils";
 
 const useLoadMovies = () => {
   const [loading, setLoading] = useState(false);
@@ -17,15 +18,19 @@ const useLoadMovies = () => {
   const loadMovies = () => {
     setLoading(true);
     getMovies({
-      api_key: '8f781d70654b5a6f2fa69770d1d115a3',
+      api_key,
       page: currentPage,
     })
       .then((response: IGetMoviesResponse) => {
         setMovies(response.results);
         if (dispatch) {
           dispatch({
-            type: 'UPDATE_TOTALS',
-            payload: response.total_results
+            type: "UPDATE_TOTALS",
+            payload: response.total_results,
+          });
+          dispatch({
+            type: "UPDATE_MOVIES",
+            payload: response.results,
           });
         }
       })
