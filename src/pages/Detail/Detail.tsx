@@ -11,18 +11,26 @@ const Detail: FC = () => {
     <div>
       {loading ? (
         <Loader />
+      ) : (!!movie?.title ? (
+        <div
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <DetailComponent movie={movie} />
+          <Link to="/">Atras</Link>
+        </div>
       ) : (
-        movie && (
-          <div
-            style={{
-              textAlign: "center",
-            }}
-          >
-            <DetailComponent movie={movie} />
-            <Link to="/">Atras</Link>
-          </div>
-        )
-      )}
+        <h2
+          style={{
+            color: "red",
+            textAlign: "center",
+            marginTop: 200,
+          }}
+        >
+          La Película no ha sido encontarda
+        </h2>
+      ))}
     </div>
   );
 };
