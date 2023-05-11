@@ -1,21 +1,23 @@
 import { FC, PropsWithChildren, createContext, useContext, useReducer } from "react";
-import MovieReducer, { UpdateCurrentPage, UpdateTotals } from "./movieRedicer";
+import MovieReducer, { UpdateCurrentPage, UpdateMovies, UpdateTotals } from "./movieReducer";
 
 export interface State {
     total_results: number;
     total_pages: number;
     currentPage: number;
+    movies: IMovie[];
 }
 
 export interface Store {
     state: State;
-    dispatch?: React.Dispatch< UpdateTotals | UpdateCurrentPage >;
+    dispatch?: React.Dispatch< UpdateTotals | UpdateCurrentPage | UpdateMovies >;
 }
 
 const initialState: State = {
     total_pages: 500,// when i test last page it returns an error that says "page must be less than or equal to 500" so dicided to fix total
     total_results: 0,
-    currentPage: 1
+    currentPage: 1,
+    movies: []
 }
 
 const MovieContext = createContext<Store>({ state: initialState });
