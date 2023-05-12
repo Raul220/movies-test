@@ -2,6 +2,10 @@ import { Input } from "antd";
 import { FC } from "react";
 import useSearch from "../../hooks/useSearch";
 
+/**
+ * Render the input for search by text
+ * @returns input for search by text
+ */
 const SearchComponent: FC = () => {
   const { handleSearch } = useSearch();
 

@@ -2,6 +2,11 @@ import { Row, Space } from "antd";
 import { FC } from "react";
 import MovieCardComponent from "../MovieCard/MovieCard";
 
+/**
+ * Render the rated list
+ * @param param0 raated movies
+ * @returns rated movie list
+ */
 const RatedListComponent: FC<{ movies: IRatedMovie[] }> = ({ movies }) => {
   return (
     <div

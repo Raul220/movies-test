@@ -7,6 +7,11 @@ import VoteComponent from "../Vote/Vote";
 import { useMovieContext } from "../../context/movieState";
 import { DollarCircleOutlined } from "@ant-design/icons"
 
+/**
+ * Render movie info and if it is not radet, render the button that open the form to rate the movie
+ * @param param0 movie info
+ * @returns Movie full info
+ */
 const DetailComponent: FC<{ movie: IGetMovieDetailResponse }> = ({ movie }) => {
   const {
     state: { ratedMovies },

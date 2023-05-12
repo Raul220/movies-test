@@ -1,5 +1,10 @@
 import { FC } from "react";
 
+/**
+ * Render the title
+ * @param param0 title text
+ * @returns h2 
+ */
 const TitleComponent: FC<{ title: string }> = ({ title }) => {
   return (
     <h2

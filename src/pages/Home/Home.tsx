@@ -3,7 +3,12 @@ import useLoadMovies from "../../hooks/useLoadMovies";
 import MovieListComponent from "../../components/MovieList/MovieList";
 import PaginationComponent from "../../components/Pagination/Pagination";
 import TitleComponent from "../../components/Title/Title";
+import Loader from "../../components/Loader/Loader";
 
+/**
+ * Render the principal page with the movie list
+ * @returns Home Page
+ */
 const Home: FC = () => {
   const { loading, movies } = useLoadMovies();
 
@@ -14,7 +19,7 @@ const Home: FC = () => {
       }}
     >
       <TitleComponent title="Movies" />
-      {loading ? <h2>Cargando...</h2> : <MovieListComponent list={movies} />}
+      {loading ? <Loader /> : <MovieListComponent list={movies} />}
       <PaginationComponent />
     </section>
   );

@@ -1,8 +1,13 @@
 import { FC } from "react";
-import { Button, Form, Input, Modal, Spin } from "antd";
+import { Button, Form, Input, Modal } from "antd";
 import useVoteModal from "../../hooks/useVoteModal";
 import { LoadingOutlined } from "@ant-design/icons";
 
+/**
+ * Render the modal wwith a form to rate the movie
+ * @param param0 title & poster of the movie to store in global state
+ * @returns modal with form
+ */
 const VoteComponent: FC<{
   title: string;
   poster: string;

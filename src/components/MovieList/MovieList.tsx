@@ -2,6 +2,11 @@ import { FC } from "react";
 import MovieCardComponent from "../MovieCard/MovieCard";
 import { Row, Space } from "antd";
 
+/**
+ * Render a list of movies
+ * @param param0 movie list
+ * @returns List of movies
+ */
 const MovieListComponent: FC<{ list: IMovie[] }> = ({ list }) => {
   return (
     <div>

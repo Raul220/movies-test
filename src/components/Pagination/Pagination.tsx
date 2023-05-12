@@ -4,6 +4,10 @@ import usePagination from "../../hooks/usePagination";
 import { Button } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
+/**
+ * Render the pagination of the list
+ * @returns footer list
+ */
 const PaginationComponent: FC = () => {
   const {
     state: { currentPage, total_pages },
@@ -27,7 +31,7 @@ const PaginationComponent: FC = () => {
         size="middle"
         shape="round"
         disabled={currentPage === 1}
-        data-testid="go-first-page-buttom"
+        data-testid="go-first-page-button"
       />
       <Button
         icon={<LeftOutlined />}
@@ -35,7 +39,7 @@ const PaginationComponent: FC = () => {
         size="middle"
         shape="round"
         disabled={currentPage === 1}
-        data-testid="go-previous-page-buttom"
+        data-testid="go-previous-page-button"
       />
       <span
         style={{
@@ -51,7 +55,7 @@ const PaginationComponent: FC = () => {
         size="middle"
         shape="round"
         disabled={currentPage === total_pages}
-        data-testid="go-next-page-buttom"
+        data-testid="go-next-page-button"
       />
       <Button
         icon={
@@ -64,7 +68,7 @@ const PaginationComponent: FC = () => {
         size="middle"
         shape="round"
         disabled={currentPage === total_pages}
-        data-testid="go-last-page-buttom"
+        data-testid="go-last-page-button"
       />
     </div>
   );

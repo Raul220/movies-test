@@ -2,6 +2,11 @@ import { Row, Space } from "antd";
 import { FC } from "react";
 import CompanyCard from "./CompanyCard";
 
+/**
+ * Render the company list that product the movie 
+ * @param param0 productors list
+ * @returns Movie production company list
+ */
 const CompanyList: FC<{ companies: IProducton_Company[] }> = ({
   companies,
 }) => {
