@@ -131,8 +131,3 @@ export async function rateMovie(variables: IRateVariables) {
     });
   return response;
 }
-
-
-export async function getRatedMovies() {
-  
-}

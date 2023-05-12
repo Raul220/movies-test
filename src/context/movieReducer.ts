@@ -10,32 +10,42 @@ export interface UpdateCurrentPage {
   payload: number;
 }
 
-export interface UpdateMovies {
-    type: "UPDATE_MOVIES";
-    payload: IMovie[]
+export interface UpdateRatedMovies {
+  type: "UPDATE_RATED_MOVIES";
+  payload: IRatedMovie[];
 }
 
-type Action = UpdateTotals | UpdateCurrentPage | UpdateMovies;
-const MovieReducer = (state: State, action: Action): State => {
-    switch (action.type) {
-        case 'UPDATE_TOTALS':
-            return {
-                ...state,
-                total_results: action.payload
-            };
-        case 'UPDATE_CURRENT_PAGE':
-            return {
-                ...state,
-                currentPage: action.payload,
-            };
-        case 'UPDATE_MOVIES':
-            return {
-                ...state,
-                movies: action.payload,
-            };
-        default:
-            return state;
-    }
+export interface UpdateSessionId {
+  type: "UPDATE_SESSION_ID";
+  payload: string;
 }
+
+type Action = UpdateTotals | UpdateCurrentPage | UpdateRatedMovies | UpdateSessionId;
+const MovieReducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case "UPDATE_TOTALS":
+      return {
+        ...state,
+        total_results: action.payload,
+      };
+    case "UPDATE_CURRENT_PAGE":
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
+    case "UPDATE_RATED_MOVIES":
+      return {
+        ...state,
+        ratedMovies: action.payload,
+      };
+    case "UPDATE_SESSION_ID":
+      return {
+        ...state,
+        session_id: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 export default MovieReducer;

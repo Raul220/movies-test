@@ -27,59 +27,75 @@ interface IGetMovieDetailVariables {
 }
 
 interface IGetMovieDetailResponse {
-    id: number;
-    adult: boolean;
-    backdrop_path: string;
-    imdb_id: string;
-    original_language: string;
-    original_title: string;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    homepage: string;
-    production_companies: IProducton_Company[];
-    release_date: string;
-    status: string;
-    tagline: string;
-    title: string;
-    vote_average: number;
-    vote_count: number;
-    genres: IGener[];
-    budget: number;
-    revenue: number;
+  id: number;
+  adult: boolean;
+  backdrop_path: string;
+  imdb_id: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  homepage: string;
+  production_companies: IProducton_Company[];
+  release_date: string;
+  status: string;
+  tagline: string;
+  title: string;
+  vote_average: number;
+  vote_count: number;
+  genres: IGener[];
+  budget: number;
+  revenue: number;
 }
 
 interface IGener {
-    id: number;
-    name: string;
+  id: number;
+  name: string;
 }
 
 interface IProducton_Company {
-    id: number;
-    logo_path: string;
-    name: string;
-    origin_country: string;
+  id: number;
+  logo_path: string;
+  name: string;
+  origin_country: string;
 }
 
 interface ICreateGuessSessionVariables {
-    api_key: string;
+  api_key: string;
 }
 
 interface ICreateGuessSessionResponse {
-    success: boolean;
-    guest_session_id: string;
-    expires_at: string;
+  success: boolean;
+  guest_session_id: string;
+  expires_at: string;
 }
 
 interface IRateVariables {
-    api_key: string;
-    value: number;
-    movie_id: string;
-    guest_session_id: string;
+  api_key: string;
+  value: number;
+  movie_id: string;
+  guest_session_id: string;
 }
 
 interface IRateResponse {
-    status_code: number;
-    status_message: string;
-    success: boolean;
+  status_code: number;
+  status_message: string;
+  success: boolean;
 }
+
+interface IRatedMovie {
+  title: string;
+  id: number;
+  poster: string;
+  value: number;
+}
+
+// interface IGetRatedMoviesVariables {
+//   api_key: string;
+//   guest_session_id: string;
+// }
+
+// interface IGetRatedMoviesResponse {
+//   movies: IMovie[];
+// }

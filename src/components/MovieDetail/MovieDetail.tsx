@@ -4,8 +4,13 @@ import { img_url_base } from "../../utils/utils";
 import { Col, Divider, Image, Row, Space } from "antd";
 import CompanyList from "../Company/CompanyList";
 import VoteComponent from "../Vote/Vote";
+import { useMovieContext } from "../../context/movieState";
 
 const DetailComponent: FC<{ movie: IGetMovieDetailResponse }> = ({ movie }) => {
+  const {
+    state: { ratedMovies },
+  } = useMovieContext();
+
   return (
     <div
       style={{
@@ -33,7 +38,10 @@ const DetailComponent: FC<{ movie: IGetMovieDetailResponse }> = ({ movie }) => {
         <span style={{ fontWeight: 700 }}>Average: </span>
         {movie.vote_average}
       </p>
-      <VoteComponent />
+      {!ratedMovies.find((e) => e.id === movie.id) && (
+        <VoteComponent poster={movie.poster_path} title={movie.title} />
+      )}
+
       <p>
         <span style={{ fontWeight: 700 }}>Estrenada: </span>
         {movie.release_date}

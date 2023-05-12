@@ -28,10 +28,6 @@ const useLoadMovies = () => {
             type: "UPDATE_TOTALS",
             payload: response.total_results,
           });
-          dispatch({
-            type: "UPDATE_MOVIES",
-            payload: response.results,
-          });
         }
       })
       .catch((e) => console.log(e))
