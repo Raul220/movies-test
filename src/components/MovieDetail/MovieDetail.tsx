@@ -1,10 +1,11 @@
 import { FC } from "react";
 import TitleComponent from "../Title/Title";
 import { img_url_base } from "../../utils/utils";
-import { Col, Divider, Image, Row, Space } from "antd";
+import { Divider, Image, Space } from "antd";
 import CompanyList from "../Company/CompanyList";
 import VoteComponent from "../Vote/Vote";
 import { useMovieContext } from "../../context/movieState";
+import { DollarCircleOutlined } from "@ant-design/icons"
 
 const DetailComponent: FC<{ movie: IGetMovieDetailResponse }> = ({ movie }) => {
   const {
@@ -74,11 +75,11 @@ const DetailComponent: FC<{ movie: IGetMovieDetailResponse }> = ({ movie }) => {
       </p>
       <p>
         <span style={{ fontWeight: 700 }}>Presupuesto: </span>
-        {movie.budget}
+        {movie.budget} <DollarCircleOutlined />
       </p>
       <p>
         <span style={{ fontWeight: 700 }}>Ganancia: </span>
-        {movie.revenue}
+        {movie.revenue} <DollarCircleOutlined />
       </p>
       <p>
         <span style={{ fontWeight: 700 }}>Productoras:</span>
