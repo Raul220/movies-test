@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Home from "../Home";
 import { BrowserRouter } from "react-router-dom";
 
@@ -19,7 +19,7 @@ describe("Testing home page", () => {
     });
   });
 
-  it("Check is the title is rendered", () => {
+  it("Check if the title is rendered", () => {
     render(
       <BrowserRouter>
         <Home />
@@ -29,7 +29,7 @@ describe("Testing home page", () => {
     expect(titleElement).toBeInTheDocument();
   });
 
-  it("Check is the button first page is disabled at start", () => {
+  it("Check if the button first page is disabled at start", () => {
     render(
       <BrowserRouter>
         <Home />
@@ -39,7 +39,7 @@ describe("Testing home page", () => {
     expect(firstPageButton).toBeDisabled();
   });
 
-  it("Check is the button previous page is disabled at start", () => {
+  it("Check if the button previous page is disabled at start", () => {
     render(
       <BrowserRouter>
         <Home />
@@ -49,7 +49,7 @@ describe("Testing home page", () => {
     expect(previousPageButton).toBeDisabled();
   });
 
-  it("Check is the button next page is not disabled at start", () => {
+  it("Check if the button next page is not disabled at start", () => {
     render(
       <BrowserRouter>
         <Home />
@@ -59,7 +59,7 @@ describe("Testing home page", () => {
     expect(nextPageButton).not.toBeDisabled();
   });
 
-  it("Check is the button last page is disabled at start", () => {
+  it("Check if the button last page is disabled at start", () => {
     render(
       <BrowserRouter>
         <Home />
@@ -69,7 +69,7 @@ describe("Testing home page", () => {
     expect(lastPageButton).not.toBeDisabled();
   });
   
-  it("Check is the button last page is disabled at start", () => {
+  it("Check if the button last page is disabled at start", () => {
     render(
       <BrowserRouter>
         <Home />
@@ -79,7 +79,7 @@ describe("Testing home page", () => {
     expect(lastPageButton).not.toBeDisabled();
   });
 
-  it("Check is the indicator is 1 at start", () => {
+  it("Check if the indicator is 1 at start", () => {
     render(
       <BrowserRouter>
         <Home />
@@ -87,5 +87,28 @@ describe("Testing home page", () => {
     );
     const indicator = screen.getByTestId("current-page");
     expect(indicator).toBe('1 / 500');
+  });
+
+  it("Check if the indicator is 2 when click next page button", async () => {
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    );
+    const nextPageButton = screen.getByTestId("go-next-page-button");
+    await fireEvent.click(nextPageButton);
+    const indicator = screen.getByTestId("current-page");
+    expect(indicator).toBe('2 / 500');
+  });
+
+  it("Check if the last page button is disable when was clicked", async () => {
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    );
+    const lastPageButton = screen.getByTestId("go-last-page-button");
+    await fireEvent.click(lastPageButton);
+    expect(lastPageButton).toBeDisabled();
   });
 });
