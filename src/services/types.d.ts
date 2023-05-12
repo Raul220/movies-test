@@ -91,11 +91,12 @@ interface IRatedMovie {
   value: number;
 }
 
-// interface IGetRatedMoviesVariables {
-//   api_key: string;
-//   guest_session_id: string;
-// }
+interface ISearchMoviesVariables {
+  api_key: string;
+  query: string;
+  page: number;
+}
 
-// interface IGetRatedMoviesResponse {
-//   movies: IMovie[];
-// }
+interface IGetRatedMoviesResponse {
+  movies: IMovie[];
+}

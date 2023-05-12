@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMovies } from "../services/moviesServices";
+import { getMovies, searchMoviesByText } from "../services/moviesServices";
 import { useMovieContext } from "../context/movieState";
 import { api_key } from "../utils/utils";
 
@@ -7,13 +7,39 @@ const useLoadMovies = () => {
   const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState<IMovie[]>([]);
   const {
-    state: { currentPage },
+    state: { currentPage, searchText },
     dispatch,
   } = useMovieContext();
 
   useEffect(() => {
-    loadMovies();
-  }, [currentPage]);
+    if (searchText === "") {
+      if (dispatch) {
+        dispatch({
+          type: "UPDATE_TOTAL_PAGES",
+          payload: 500,
+        });
+      }
+      loadMovies();
+    } else {
+      searchMovies();
+    }
+  }, [searchText, currentPage]);
+
+  const searchMovies = () => {
+    setLoading(true);
+    searchMoviesByText({ api_key, page: 1, query: searchText })
+      .then((res) => {
+        setMovies(res.results);
+        if(dispatch) {
+          dispatch({
+            type: "UPDATE_TOTAL_PAGES",
+            payload: res.total_pages
+          })
+        }
+      })
+      .catch((e) => console.log(e))
+      .finally(() => setLoading(false));
+  };
 
   const loadMovies = () => {
     setLoading(true);
@@ -23,12 +49,6 @@ const useLoadMovies = () => {
     })
       .then((response: IGetMoviesResponse) => {
         setMovies(response.results);
-        if (dispatch) {
-          dispatch({
-            type: "UPDATE_TOTALS",
-            payload: response.total_results,
-          });
-        }
       })
       .catch((e) => console.log(e))
       .finally(() => setLoading(false));

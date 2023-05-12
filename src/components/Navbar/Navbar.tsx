@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { useMovieContext } from "../../context/movieState";
+import SearchComponent from "../Search/SearchComponent";
 
 const Navbar: FC = () => {
   const {
@@ -37,6 +38,9 @@ const Navbar: FC = () => {
           </span>
         </h4>
       </Link>
+      {
+        window.location.pathname.split('/')[1] === '' && <SearchComponent /> 
+      }
       {!!ratedMovies.length && (
         <Link
           to="/rated"

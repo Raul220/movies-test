@@ -1,7 +1,7 @@
 import { State } from "./movieState";
 
 export interface UpdateTotals {
-  type: "UPDATE_TOTALS";
+  type: "UPDATE_TOTAL_PAGES";
   payload: number;
 }
 
@@ -20,13 +20,18 @@ export interface UpdateSessionId {
   payload: string;
 }
 
-type Action = UpdateTotals | UpdateCurrentPage | UpdateRatedMovies | UpdateSessionId;
+export interface UpdateSearchText {
+  type: "UPDATE_SEARCH_TEXT";
+  payload: string;
+}
+
+type Action = UpdateTotals | UpdateCurrentPage | UpdateRatedMovies | UpdateSessionId | UpdateSearchText;
 const MovieReducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case "UPDATE_TOTALS":
+    case "UPDATE_TOTAL_PAGES":
       return {
         ...state,
-        total_results: action.payload,
+        total_pages: action.payload,
       };
     case "UPDATE_CURRENT_PAGE":
       return {
@@ -42,6 +47,11 @@ const MovieReducer = (state: State, action: Action): State => {
       return {
         ...state,
         session_id: action.payload,
+      };
+    case "UPDATE_SEARCH_TEXT":
+      return {
+        ...state,
+        searchText: action.payload,
       };
     default:
       return state;

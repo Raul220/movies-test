@@ -8,6 +8,7 @@ import {
 import MovieReducer, {
   UpdateCurrentPage,
   UpdateRatedMovies,
+  UpdateSearchText,
   UpdateSessionId,
   UpdateTotals,
 } from "./movieReducer";
@@ -18,12 +19,13 @@ export interface State {
   currentPage: number;
   session_id: string;
   ratedMovies: IRatedMovie[];
+  searchText: string;
 }
 
 export interface Store {
   state: State;
   dispatch?: React.Dispatch<
-    UpdateTotals | UpdateCurrentPage | UpdateRatedMovies | UpdateSessionId
+    UpdateTotals | UpdateCurrentPage | UpdateRatedMovies | UpdateSessionId | UpdateSearchText
   >;
 }
 
@@ -33,6 +35,7 @@ const initialState: State = {
   currentPage: 1,
   session_id: "",
   ratedMovies: [],
+  searchText: '',
 };
 
 const MovieContext = createContext<Store>({ state: initialState });
