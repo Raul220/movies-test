@@ -108,7 +108,7 @@ export async function rateMovie(variables: IRateVariables) {
   let response: IRateResponse = {
     status_code: 0,
     status_message: "",
-    success: false
+    success: false,
   };
   await fetch(url, {
     method: "POST",
@@ -129,5 +129,28 @@ export async function rateMovie(variables: IRateVariables) {
     .catch((e) => {
       console.log(e);
     });
+  return response;
+}
+
+/**
+ * Search movies by text
+ * @param variables api key page and text tu search
+ * @returns the movies
+ */
+export async function searchMoviesByText(variables: ISearchMoviesVariables) {
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${variables.api_key}&query=${variables.query}&page=${variables.page}`;
+  let response: IGetMoviesResponse = {
+    page: 1,
+    results: [],
+    total_pages: 0,
+    total_results: 0,
+  };
+  await axios
+    .get(url)
+    .then((res) => {
+      console.log(res);
+      response = res.data;
+    })
+    .catch((e) => console.log(e));
   return response;
 }
