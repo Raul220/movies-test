@@ -26,7 +26,7 @@ const VoteComponent: FC<{
         Votar
       </Button>
       <Modal
-        title="Puntúa la Película"
+        title="Puntúa la Película de 0.5 a 10"
         open={isModalOpen}
         onOk={() => handleOk(title, poster)}
         onCancel={handleCancel}

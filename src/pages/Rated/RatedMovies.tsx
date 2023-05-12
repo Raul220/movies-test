@@ -1,3 +1,5 @@
+import RatedListComponent from "../../components/RatedList/RatedList";
+import TitleComponent from "../../components/Title/Title";
 import { useMovieContext } from "../../context/movieState";
 
 const RatedMovies = () => {
@@ -7,12 +9,8 @@ const RatedMovies = () => {
 
   return (
     <div>
-      Rated Movies
-      <ul>
-        {ratedMovies.map((item, index) => (
-          <li key={index}>{item.title}</li>
-        ))}
-      </ul>
+      <TitleComponent title="Películas puntuadas" />
+      <RatedListComponent movies={ratedMovies} />
     </div>
   );
 };
