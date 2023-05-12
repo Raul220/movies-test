@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { useMovieContext } from "../../context/movieState";
 import SearchComponent from "../Search/SearchComponent";
 
+/**
+ * Render a navbar to naviagte throgth the site. If there are any rated movie, render the link to rated movie list
+ * @returns Navbar
+ */
 const Navbar: FC = () => {
   const {
     state: { ratedMovies },

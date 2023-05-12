@@ -4,6 +4,11 @@ import { Card, Image, Divider } from "antd";
 import { Link } from "react-router-dom";
 import { StarFilled } from "@ant-design/icons";
 
+/**
+ * Render a card with principal movie information
+ * @param param0 Movie info. rated is a calification number that if is not null is because the componet is rendered in th rated list
+ * @returns A card with movie info
+ */
 const MovieCardComponent: FC<{
   name: string;
   poster?: string | null;

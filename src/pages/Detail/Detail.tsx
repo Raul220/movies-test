@@ -4,6 +4,10 @@ import useDetail from "../../hooks/useMovieDetail";
 import DetailComponent from "../../components/MovieDetail/MovieDetail";
 import Loader from "../../components/Loader/Loader";
 
+/**
+ * Render the movie detail page. If the id does not exist render a error text
+ * @returns movie detail page
+ */
 const Detail: FC = () => {
   const { movie, loading } = useDetail();
 
