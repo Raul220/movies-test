@@ -3,7 +3,10 @@ import { Button, Form, Input, Modal, Spin } from "antd";
 import useVoteModal from "../../hooks/useVoteModal";
 import { LoadingOutlined } from "@ant-design/icons";
 
-const VoteComponent: FC = () => {
+const VoteComponent: FC<{
+  title: string;
+  poster: string;
+}> = ({ title, poster }) => {
   const {
     isModalOpen,
     showModal,
@@ -23,9 +26,9 @@ const VoteComponent: FC = () => {
         Votar
       </Button>
       <Modal
-        title="Puntúa la Película"
+        title="Puntúa la Película de 0.5 a 10"
         open={isModalOpen}
-        onOk={handleOk}
+        onOk={() => handleOk(title, poster)}
         onCancel={handleCancel}
       >
         <Form form={form}>

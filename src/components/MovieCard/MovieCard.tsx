@@ -2,31 +2,53 @@ import { FC } from "react";
 import { img_url_base } from "../../utils/utils";
 import { Card, Image, Divider } from "antd";
 import { Link } from "react-router-dom";
+import { StarFilled } from "@ant-design/icons";
 
 const MovieCardComponent: FC<{
   name: string;
   poster?: string | null;
-  release: string;
+  release?: string | null;
   id: number;
-}> = ({ name, poster, release, id }) => {
+  rated?: number | null;
+}> = ({ name, poster, release, id, rated }) => {
+
   return (
     <Card
       title={name}
-      extra={<Link to={`movie/${id}`}>Ver más</Link>}
+      extra={<Link to={'/movie/'+ id}>Ver más</Link>}
       style={{ width: 300, margin: "2.5px" }}
     >
       <Image src={img_url_base + poster} style={{ borderRadius: 8 }} />
       <Divider />
-      <p>
-        <span
-          style={{
-            fontWeight: 900,
-          }}
-        >
-          Extrenada:{" "}
-        </span>
-        {release}
-      </p>
+      {!!release && (
+        <p>
+          <span
+            style={{
+              fontWeight: 900,
+            }}
+          >
+            Extrenada:{" "}
+          </span>
+          {release}
+        </p>
+      )}
+
+      {!!rated && (
+        <p>
+          <span
+            style={{
+              fontWeight: 900,
+            }}
+          >
+            Puntuación: {rated}{" "}
+            <StarFilled
+              style={{
+                color: "#ffd700"
+              }}
+            />
+          </span>
+        </p>
+      )}
     </Card>
   );
 };
