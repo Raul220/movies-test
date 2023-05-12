@@ -14,7 +14,6 @@
     "antd": "^5.4.7",
     "axios": "^1.4.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-router": "^6.11.1",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
@@ -24,14 +23,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns '/node_modules/(?!(axios)/)",
+    "test": "react-scripts test --transformIgnorePatterns '/node_modules/(?!(axios)/",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest",
-      "react-app/react-testing-library"
+      "react-app/jest"
     ]
   },
   "browserslist": {
@@ -45,11 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/preset-typescript": "^7.21.4",
-    "@jest/globals": "^29.5.0",
-    "jest-environment-jsdom": "^29.5.0",
-    "ts-jest": "^29.1.0"
   }
 }
